@@ -6,7 +6,7 @@ This project was built as a learning exercise to better understand how marginal 
 ## Overview
 The calculator walks a user through income input, deduction selection, and tax calculation, then produces a clear summary showing how income is taxed across brackets.
 
-It emphasizes the difference between marginal and effective tax rates — a concept that is often misunderstood.
+It emphasizes the difference between marginal and effective tax rates; a concept that is often misunderstood.
 
 ## Features
 - Supports Single and Married Filing Jointly filing statuses
