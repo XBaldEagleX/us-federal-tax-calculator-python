@@ -8,6 +8,14 @@ The calculator walks a user through income input, deduction selection, and tax c
 
 It emphasizes the difference between marginal and effective tax rates; a concept that is often misunderstood.
 
+## What's New in v1.0.5 (State Tax Phase 1)
+- Added initial **state income tax** support!
+- Handles the 9 states with **no state income tax** (AK, FL, NV, NH, SD, TN, TX, WA, WY) → returns $0.00 automatically.
+- Users enter their state (e.g., "TX" or "Texas"), and it displays in the summary: "No state income tax" or "N/A (not implemented yet)" for flat/graduated states.
+- Modular `state_tax.py` file for easy future expansion (flat and graduated brackets planned next).
+- Updated output now shows federal + state tax side-by-side.
+- Closes GitHub Issue #1.
+
 ## Features
 - Supports Single and Married Filing Jointly filing statuses
 - Accepts income input with or without commas
