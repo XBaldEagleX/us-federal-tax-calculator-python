@@ -56,9 +56,13 @@ Follow the prompts to enter filing status, income, and deductions.
 I wanted a hands-on way to understand how U.S. tax brackets actually work
 instead of relying on online calculators. This project helped reinforce and build upon both Python fundamentals and real-world economic concepts.
 
-## Roadmap of Improvemnets
-Planned enhancements are tracked in the GitHub Issues tab and include:
-- FICA estimates
-- Additional fillinf statueses (HOH, MFS)
-- State Tax Implementation
-- Export results into CSV
+## Roadmap / Planned Improvements
+Tracked in GitHub Issues — contributions welcome!
+
+- [x] State Tax Implementation — Phase 1 (v1.0.5): Support for states with no income tax
+- [ ] State Tax — Phase 2: Flat-rate states (e.g., CO, IL, PA)
+- [ ] State Tax — Phase 3: Graduated/bracketed states (e.g., CA, NY)
+- [ ] FICA (Social Security + Medicare) estimates
+- [ ] Additional filing statuses (Head of Household, Married Filing Separately)
+- [ ] Export results to CSV
+- [ ] More accurate standard deductions/brackets (inflation adjustments, future years)
