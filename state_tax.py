@@ -1,20 +1,11 @@
 """
-Created on Wed Feb  4 14:21:53 2026
+State Income Tax Module
 
-Title: State Tax Libary
-
-@author: Craig A. Willits Jr
-
-
-
-v1.0.5: State tax (NONE-only)
+Provides state tax data and calculation functions for all 50 states.
+Supports: no state income tax, flat tax, and graduated (progressive) tax systems.
 """
 
-# 2025 state income tax system typev1.0.5: State tax (NONE-only)
-# 'none' = no state income tax
-# 'flat' = flat income tax
-# 'graduated' = bracketed income tax
-
+# 2025 State Income Tax System Types
 STATE_TAX_TYPE_2025 = {
     'AK': 'none', 'AL': 'graduated', 'AR': 'graduated', 'AZ': 'flat',
     'CA': 'graduated', 'CO': 'flat', 'CT': 'graduated', 'DC': 'graduated',
@@ -31,6 +22,7 @@ STATE_TAX_TYPE_2025 = {
     'WI': 'graduated', 'WV': 'graduated', 'WY': 'none',
 }
 
+# State name to abbreviation mapping
 STATE_ALIASES = {
     'TEXAS': 'TX',
     'FLORIDA': 'FL',
@@ -43,24 +35,65 @@ STATE_ALIASES = {
     'WYOMING': 'WY',
 }
 
+
 def normalize_state(user_input: str) -> str:
+    """
+    Convert state input to two-letter abbreviation.
+    Handles full state names and ensures uppercase.
+    
+    Args:
+        user_input (str): User-entered state (abbreviation or full name)
+    
+    Returns:
+        str: Two-letter state abbreviation in uppercase
+    """
     s = user_input.strip().upper()
     return STATE_ALIASES.get(s, s)
 
-def calculate_state_tax_none_only(taxable_income: float, state_code: str):
+
+def get_state_tax_type(state_code: str) -> str:
     """
-    v1.0.5 behavior:
-      - If state has NO income tax ('none'): return $0.00 + label
-      - Otherwise: return None (N/A) + label, and skip calculation
-    Returns: (state_tax_or_None, label)
+    Get the tax system type for a given state.
+    
+    Args:
+        state_code (str): Two-letter state abbreviation
+    
+    Returns:
+        str: 'none', 'flat', 'graduated', or 'unknown'
     """
-    tax_type = STATE_TAX_TYPE_2025.get(state_code)
+    return STATE_TAX_TYPE_2025.get(state_code, 'unknown')
+
+
+def calculate_state_tax(taxable_income: float, state_code: str):
+    """
+    Calculate state income tax for given income and state.
+    Currently implements 'none' states only.
+    
+    Args:
+        taxable_income (float): Taxable income after deductions
+        state_code (str): Two-letter state abbreviation
+    
+    Returns:
+        tuple: (state_tax_or_None, label_str)
+            - state_tax_or_None: Dollar amount or None if not implemented
+            - label_str: Description of tax status or reason not calculated
+    """
+    tax_type = get_state_tax_type(state_code)
 
     if tax_type == 'none':
         return 0.0, 'No state income tax'
 
-    if tax_type in ('flat', 'graduated'):
-        return None, 'N/A (not implemented yet)'
+    if tax_type == 'flat':
+        return None, 'N/A (flat tax not yet implemented)'
+
+    if tax_type == 'graduated':
+        return None, 'N/A (graduated tax not yet implemented)'
 
     return None, 'N/A (unknown/unsupported state)'
+
+
+# Legacy function name for backward compatibility
+def calculate_state_tax_none_only(taxable_income: float, state_code: str):
+    """Deprecated: use calculate_state_tax() instead."""
+    return calculate_state_tax(taxable_income, state_code)
 
