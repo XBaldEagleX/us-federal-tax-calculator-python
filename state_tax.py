@@ -37,47 +37,15 @@ STATE_ALIASES = {
 
 
 def normalize_state(user_input: str) -> str:
-    """
-    Convert state input to two-letter abbreviation.
-    Handles full state names and ensures uppercase.
-    
-    Args:
-        user_input (str): User-entered state (abbreviation or full name)
-    
-    Returns:
-        str: Two-letter state abbreviation in uppercase
-    """
     s = user_input.strip().upper()
     return STATE_ALIASES.get(s, s)
 
 
 def get_state_tax_type(state_code: str) -> str:
-    """
-    Get the tax system type for a given state.
-    
-    Args:
-        state_code (str): Two-letter state abbreviation
-    
-    Returns:
-        str: 'none', 'flat', 'graduated', or 'unknown'
-    """
     return STATE_TAX_TYPE_2025.get(state_code, 'unknown')
 
 
 def calculate_state_tax(taxable_income: float, state_code: str):
-    """
-    Calculate state income tax for given income and state.
-    Currently implements 'none' states only.
-    
-    Args:
-        taxable_income (float): Taxable income after deductions
-        state_code (str): Two-letter state abbreviation
-    
-    Returns:
-        tuple: (state_tax_or_None, label_str)
-            - state_tax_or_None: Dollar amount or None if not implemented
-            - label_str: Description of tax status or reason not calculated
-    """
     tax_type = get_state_tax_type(state_code)
 
     if tax_type == 'none':
