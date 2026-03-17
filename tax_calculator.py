@@ -182,7 +182,7 @@ while True:
     
     
     # Spacer
-    print('\n' + ''='*40)
+    print('\n' + '=' * 40)
     # Call marginal rate
     marginal_rate = get_marginal_rate(taxable_income, brackets)
     print(f'\nMarginal tax rate: {marginal_rate * 100:.0f}%')
@@ -218,3 +218,4 @@ while True:
     again = input('\nRun another calculation? (Y/N): ').lower()
     if again != 'y':
         break
+        
