@@ -116,7 +116,7 @@ def main():
             if filing_status in ('single', 'mfj'):
                 break
             else:
-                print('Please enter 'single' or 'mfj'.\n')
+                print('Please enter single or mfj.\n')
         
         # Get and confirm income
         income = get_and_confirm_income(filing_status)
@@ -172,4 +172,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
